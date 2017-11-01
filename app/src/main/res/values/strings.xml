@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">hospitalapp</string>
+    <string name="app_name">hopkinshospital</string>
+    <string name="app_title">Hopkins Hospital</string>
 </resources>
