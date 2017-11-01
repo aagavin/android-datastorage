@@ -3,6 +3,7 @@ package ca.aagavin.hospitalapp.DAO;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import ca.aagavin.hospitalapp.beans.Doctor;
@@ -22,6 +23,9 @@ public class CommonDAO {
     public void close(){
         this._db.close();
     }
+
+
+    /************************ CREATE ******************************/
 
     public void createEntity(Doctor entity){
         ContentValues contentValues = new ContentValues();
@@ -44,6 +48,22 @@ public class CommonDAO {
     private void _insert(String tableName, ContentValues contentValues){
         this._db.insert(tableName, null, contentValues);
 
+    }
+
+    /************************ READ ******************************/
+
+    public Doctor getEntity(long id){
+        Doctor doctor = new Doctor();
+        Cursor cursor = this._db.query(true,"Doctor", Doctor.getColumns(),"doctorId = " + id,null, null, null, null, null);
+
+        doctor.setDoctorId(cursor.getLong(0));
+        doctor.setFirstname(cursor.getString(1));
+        doctor.setLastname(cursor.getString(2));
+        doctor.setDepartment(cursor.getString(3));
+        doctor.setPassword(cursor.getString(4));
+
+        cursor.close();
+        return doctor;
     }
 
 }

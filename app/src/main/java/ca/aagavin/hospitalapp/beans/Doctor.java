@@ -1,17 +1,17 @@
 package ca.aagavin.hospitalapp.beans;
 
 public class Doctor {
-    private int doctorId;
+    private long doctorId;
     private String firstname;
     private String lastname;
     private String department;
     private String password;
 
-    public int getDoctorId() {
+    public long getDoctorId() {
         return doctorId;
     }
 
-    public void setDoctorId(int doctorId) {
+    public void setDoctorId(long doctorId) {
         this.doctorId = doctorId;
     }
 
@@ -45,5 +45,9 @@ public class Doctor {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public static String[] getColumns(){
+        return new String[] {"doctorId", "firstname", "lastname", "department", "password"};
     }
 }

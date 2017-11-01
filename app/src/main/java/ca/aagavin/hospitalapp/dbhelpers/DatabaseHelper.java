@@ -21,7 +21,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         String PATIENT_TABLE_CREATE =
-            "CREATE TABLE PATIENT(" +
+            "CREATE TABLE Patient (" +
                 "   patientId   INT             PRIMARY KEY," +
                 "   firstname   VARCHAR(255)    NOT NULL," +
                 "   lastname    VARCHAR(255)    NOT NULL," +
@@ -36,7 +36,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 "   nurseId     INT            NOT NULL," +
                 "   bpl         INT            NOT NULL," +
                 "   bph         INT            NOT NULL," +
-                "   pulse       INT            NOT NULL" +
+                "   pulse       INT            NOT NULL," +
                 "   bpm         INT            NOT NULL" +
                 "   );";
         String NURSE_TABLE_CREATE =
@@ -45,7 +45,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 "   firstname   VARCHAR(255)  NOT NULL," +
                 "   lastname    VARCHAR(255)  NOT NULL," +
                 "   department  VARCHAR(255)  NOT NULL," +
-                "   password    VARCHAR(255)  NOT NULL," +
+                "   password    VARCHAR(255)  NOT NULL" +
                 "   );";
         String DOCTOR_TABLE_CREATE =
             "CREATE TABLE Doctor (" +
@@ -53,7 +53,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 "   firstname   VARCHAR(255)     NOT NULL," +
                 "   lastname    VARCHAR(255)    NOT NULL," +
                 "   department  VARCHAR(255)      NOT NULL," +
-                "   password    VARCHAR(255)     NOT NULL," +
+                "   password    VARCHAR(255)     NOT NULL" +
                 ");";
         sqLiteDatabase.execSQL(PATIENT_TABLE_CREATE);
         sqLiteDatabase.execSQL(TEST_TABLE_CREATE);
