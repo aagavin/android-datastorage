@@ -33,9 +33,9 @@ public class MainActivity extends AppCompatActivity {
         EditText username = findViewById(R.id.usernameText);
         EditText password = findViewById(R.id.passwordText);
         if(this._verifyNotEmpty(username, password)) {
-
-
+            Doctor d = this._dao.login(username.getText().toString(), password.getText().toString());
             Toast.makeText(this, "button ", Toast.LENGTH_SHORT).show();
+
         }
     }
 
