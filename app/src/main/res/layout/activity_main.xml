@@ -17,13 +17,14 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_weight="0"
                 android:orientation="horizontal">
 
                 <TextView
                     android:id="@+id/textView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:layout_weight="0"
                     android:lineSpacingExtra="12sp"
                     android:text="Login to the Application"
                     android:textAlignment="center"
@@ -36,13 +37,14 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_weight="0"
                 android:orientation="horizontal">
 
                 <TextView
                     android:id="@+id/usernameView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:layout_weight="0"
                     android:text="Username: "
                     android:textColor="@android:color/black"
                     android:textSize="20sp" />
@@ -52,7 +54,7 @@
 
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:layout_weight="0"
                     android:ems="10"
                     android:inputType="textPersonName" />
             </LinearLayout>
@@ -60,13 +62,14 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_weight="0"
                 android:orientation="horizontal">
 
                 <TextView
                     android:id="@+id/passwordView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:layout_weight="0"
                     android:text="Password: "
                     android:textColor="@android:color/black"
                     android:textSize="20sp" />
@@ -75,7 +78,7 @@
                     android:id="@+id/passwordText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:layout_weight="0"
                     android:ems="10"
                     android:inputType="textPassword" />
 
@@ -84,10 +87,11 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="2"
+                android:layout_weight="0"
                 android:orientation="horizontal">
 
                 <RadioGroup
+                    android:id="@+id/userSelection"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
@@ -96,6 +100,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
+                        android:checked="false"
                         android:text="Doctor"
                         android:textSize="20sp" />
 
@@ -120,11 +125,13 @@
                     android:id="@+id/button"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
                     android:layout_weight="1"
                     android:onClick="loginBtnClick"
                     android:text="Login" />
 
             </LinearLayout>
+
         </LinearLayout>
 
 

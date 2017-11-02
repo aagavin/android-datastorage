@@ -52,6 +52,7 @@ public class CommonDAO {
 
     /************************ READ ******************************/
 
+
     public Doctor getEntity(long id){
         Doctor doctor = new Doctor();
         Cursor cursor = this._db.query(true,"Doctor", Doctor.getColumns(),"doctorId = " + id,null, null, null, null, null);
@@ -68,7 +69,7 @@ public class CommonDAO {
         return doctor;
     }
 
-    public Object login (String firstname, String passsword){
+    public Doctor loginDoctor (String firstname, String passsword){
         Doctor doctor = new Doctor();
         Cursor cursor = this._db.query("Doctor", Doctor.getColumns(), "firstname = ? AND password = ?", new String[] {firstname, passsword}, null, null, null, null);
 
@@ -84,6 +85,22 @@ public class CommonDAO {
 
         cursor.close();
         return doctor;
+    }
+
+    public Nurse loginNurse(String firstname, String passsword){
+        Nurse nurse = new Nurse();
+        Cursor cursor = this._db.query("Doctor", Doctor.getColumns(), "firstname = ? AND password = ?", new String[] {firstname, passsword}, null, null, null, null);
+
+        cursor.moveToFirst();
+
+        nurse.setNurseId(cursor.getInt(0));
+        nurse.setFirstname(cursor.getString(1));
+        nurse.setLastname(cursor.getString(2));
+        nurse.setDepartment(cursor.getString(3));
+        nurse.setPassword(cursor.getString(4));
+
+        cursor.close();
+        return nurse;
     }
 
 }
