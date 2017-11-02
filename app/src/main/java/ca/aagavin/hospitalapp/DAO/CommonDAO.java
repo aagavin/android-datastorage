@@ -68,11 +68,13 @@ public class CommonDAO {
         return doctor;
     }
 
-    public Doctor login (String firstname, String passsword){
+    public Object login (String firstname, String passsword){
         Doctor doctor = new Doctor();
         Cursor cursor = this._db.query("Doctor", Doctor.getColumns(), "firstname = ? AND password = ?", new String[] {firstname, passsword}, null, null, null, null);
 
         cursor.moveToFirst();
+
+        cursor.getCount();
 
         doctor.setDoctorId(cursor.getLong(0));
         doctor.setFirstname(cursor.getString(1));

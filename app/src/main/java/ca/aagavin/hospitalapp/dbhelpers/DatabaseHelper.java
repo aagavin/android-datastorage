@@ -11,7 +11,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     private static final int DATABASE_VERSION = 1;
 
-    private static final String DATABASE_NAME = "contactsManager";
+    private static final String DATABASE_NAME = "HospitalManager.db";
 
 
     public DatabaseHelper(Context context) {
@@ -22,7 +22,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         String PATIENT_TABLE_CREATE =
             "CREATE TABLE Patient (" +
-                "   patientId   INT             PRIMARY KEY," +
+                "   patientId   INTEGER PRIMARY KEY AUTOINCREMENT," +
                 "   firstname   VARCHAR(255)    NOT NULL," +
                 "   lastname    VARCHAR(255)    NOT NULL," +
                 "   department  VARCHAR(150)    NOT NULL," +
@@ -31,7 +31,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 "   );";
         String TEST_TABLE_CREATE =
             "CREATE TABLE Test (" +
-                "   testId      INT            PRIMARY KEY," +
+                "   testId      INTEGER PRIMARY KEY AUTOINCREMENT," +
                 "   patientId   INT            NOT NULL," +
                 "   nurseId     INT            NOT NULL," +
                 "   bpl         INT            NOT NULL," +
@@ -41,7 +41,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 "   );";
         String NURSE_TABLE_CREATE =
             "CREATE TABLE Nurse (" +
-                "   nurseId     INT           PRIMARY KEY," +
+                "   nurseId     INTEGER PRIMARY KEY AUTOINCREMENT," +
                 "   firstname   VARCHAR(255)  NOT NULL," +
                 "   lastname    VARCHAR(255)  NOT NULL," +
                 "   department  VARCHAR(255)  NOT NULL," +
@@ -49,7 +49,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 "   );";
         String DOCTOR_TABLE_CREATE =
             "CREATE TABLE Doctor (" +
-                "   doctorId    INT             PRIMARY KEY,"+
+                "   doctorId    INTEGER PRIMARY KEY AUTOINCREMENT,"+
                 "   firstname   VARCHAR(255)     NOT NULL," +
                 "   lastname    VARCHAR(255)    NOT NULL," +
                 "   department  VARCHAR(255)      NOT NULL," +
