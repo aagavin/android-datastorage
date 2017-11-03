@@ -8,6 +8,7 @@ import android.database.sqlite.SQLiteDatabase;
 
 import ca.aagavin.hospitalapp.beans.Doctor;
 import ca.aagavin.hospitalapp.beans.Nurse;
+import ca.aagavin.hospitalapp.beans.Patient;
 import ca.aagavin.hospitalapp.dbhelpers.DatabaseHelper;
 
 public class CommonDAO {
@@ -43,6 +44,16 @@ public class CommonDAO {
         contentValues.put("department", entity.getDepartment());
         contentValues.put("password", entity.getPassword());
         this._insert("Nurse", contentValues);
+    }
+
+    public void createEntity(Patient entity){
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("firstname", entity.getFirstname());
+        contentValues.put("lastname", entity.getLastname());
+        contentValues.put("department", entity.getDepartment());
+        contentValues.put("doctorId", entity.getDoctorId());
+        contentValues.put("room", entity.getRoom());
+        this._insert("Patient", contentValues);
     }
 
     private void _insert(String tableName, ContentValues contentValues){

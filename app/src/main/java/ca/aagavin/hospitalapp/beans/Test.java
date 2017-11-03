@@ -1,8 +1,5 @@
 package ca.aagavin.hospitalapp.beans;
 
-/**
- * Created by aaron on 11/1/17.
- */
 
 public class Test {
 

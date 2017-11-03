@@ -14,6 +14,7 @@ import ca.aagavin.hospitalapp.DAO.CommonDAO;
 import ca.aagavin.hospitalapp.R;
 import ca.aagavin.hospitalapp.beans.Doctor;
 import ca.aagavin.hospitalapp.beans.Nurse;
+import ca.aagavin.hospitalapp.beans.Patient;
 
 public class MainActivity extends AppCompatActivity implements RadioGroup.OnCheckedChangeListener {
 
@@ -38,7 +39,14 @@ public class MainActivity extends AppCompatActivity implements RadioGroup.OnChec
         d.setDepartment("radiology");
         d.setPassword("pass");
 
+        Patient p = new Patient();
+        p.setFirstname("testPatient");
+        p.setLastname("testLastName");
+        p.setDoctorId(1);
+        p.setRoom(123);
+
         this._dao.createEntity(d);
+        this._dao.createEntity(p);
 
     }
 
@@ -54,10 +62,11 @@ public class MainActivity extends AppCompatActivity implements RadioGroup.OnChec
                 Doctor doctor = this._dao.loginDoctor(username.getText().toString(), password.getText().toString());
                 if (doctor !=null) {
                     SharedPreferences.Editor editor = getSharedPreferences("loginid", MODE_PRIVATE).edit();
-                    editor.putInt("docId", doctor.getDoctorId());
+                    editor.putInt("id", doctor.getDoctorId());
+                    editor.putBoolean("isDoctor", true);
                     editor.apply();
 
-                    startActivity(new Intent(this, TestDataActivity.class));
+                    startActivity(new Intent(this, MenuActivity.class));
                 }
                 else{
                     Toast.makeText(this, "Wrong username or password", Toast.LENGTH_SHORT).show();
