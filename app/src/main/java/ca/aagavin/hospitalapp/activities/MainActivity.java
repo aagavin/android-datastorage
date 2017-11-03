@@ -1,5 +1,6 @@
-package ca.aagavin.hospitalapp;
+package ca.aagavin.hospitalapp.activities;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -10,6 +11,7 @@ import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import ca.aagavin.hospitalapp.DAO.CommonDAO;
+import ca.aagavin.hospitalapp.R;
 import ca.aagavin.hospitalapp.beans.Doctor;
 import ca.aagavin.hospitalapp.beans.Nurse;
 
@@ -31,7 +33,7 @@ public class MainActivity extends AppCompatActivity implements RadioGroup.OnChec
         this._isDoctor = -1;
 
         Doctor d = new Doctor();
-        d.setFirstname("Aaron");
+        d.setFirstname("aaron");
         d.setLastname("Smith");
         d.setDepartment("radiology");
         d.setPassword("pass");
@@ -50,7 +52,16 @@ public class MainActivity extends AppCompatActivity implements RadioGroup.OnChec
             }
             else if(this._isDoctor == 1){
                 Doctor doctor = this._dao.loginDoctor(username.getText().toString(), password.getText().toString());
-                SharedPreferences.Editor editor = getSharedPreferences("loginid",MODE_PRIVATE).edit();
+                if (doctor !=null) {
+                    SharedPreferences.Editor editor = getSharedPreferences("loginid", MODE_PRIVATE).edit();
+                    editor.putInt("docId", doctor.getDoctorId());
+                    editor.apply();
+
+                    startActivity(new Intent(this, TestDataActivity.class));
+                }
+                else{
+                    Toast.makeText(this, "Wrong username or password", Toast.LENGTH_SHORT).show();
+                }
 
 
             }
