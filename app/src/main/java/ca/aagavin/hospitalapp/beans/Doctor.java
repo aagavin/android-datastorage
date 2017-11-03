@@ -1,17 +1,17 @@
 package ca.aagavin.hospitalapp.beans;
 
 public class Doctor {
-    private long doctorId;
+    private int doctorId;
     private String firstname;
     private String lastname;
     private String department;
     private String password;
 
-    public long getDoctorId() {
+    public int getDoctorId() {
         return doctorId;
     }
 
-    public void setDoctorId(long doctorId) {
+    public void setDoctorId(int doctorId) {
         this.doctorId = doctorId;
     }
 

@@ -23,7 +23,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         String PATIENT_TABLE_CREATE =
             "CREATE TABLE Patient (" +
                 "   patientId   INTEGER PRIMARY KEY AUTOINCREMENT," +
-                "   firstname   VARCHAR(255)    NOT NULL," +
+                "   firstname   VARCHAR(255)    NOT NULL UNIQUE," +
                 "   lastname    VARCHAR(255)    NOT NULL," +
                 "   department  VARCHAR(150)    NOT NULL," +
                 "   doctorId    INT             NOT NULL," +
@@ -42,7 +42,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         String NURSE_TABLE_CREATE =
             "CREATE TABLE Nurse (" +
                 "   nurseId     INTEGER PRIMARY KEY AUTOINCREMENT," +
-                "   firstname   VARCHAR(255)  NOT NULL," +
+                "   firstname   VARCHAR(255)  NOT NULL UNIQUE," +
                 "   lastname    VARCHAR(255)  NOT NULL," +
                 "   department  VARCHAR(255)  NOT NULL," +
                 "   password    VARCHAR(255)  NOT NULL" +
@@ -50,7 +50,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         String DOCTOR_TABLE_CREATE =
             "CREATE TABLE Doctor (" +
                 "   doctorId    INTEGER PRIMARY KEY AUTOINCREMENT,"+
-                "   firstname   VARCHAR(255)     NOT NULL," +
+                "   firstname   VARCHAR(255)     NOT NULL  UNIQUE," +
                 "   lastname    VARCHAR(255)    NOT NULL," +
                 "   department  VARCHAR(255)      NOT NULL," +
                 "   password    VARCHAR(255)     NOT NULL" +

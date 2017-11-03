@@ -59,7 +59,7 @@ public class CommonDAO {
 
         cursor.moveToFirst();
         
-        doctor.setDoctorId(cursor.getLong(0));
+        doctor.setDoctorId(cursor.getInt(0));
         doctor.setFirstname(cursor.getString(1));
         doctor.setLastname(cursor.getString(2));
         doctor.setDepartment(cursor.getString(3));
@@ -77,7 +77,7 @@ public class CommonDAO {
 
         cursor.getCount();
 
-        doctor.setDoctorId(cursor.getLong(0));
+        doctor.setDoctorId(cursor.getInt(0));
         doctor.setFirstname(cursor.getString(1));
         doctor.setLastname(cursor.getString(2));
         doctor.setDepartment(cursor.getString(3));
