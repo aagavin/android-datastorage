@@ -28,7 +28,7 @@ public class MenuActivity extends AppCompatActivity implements AdapterView.OnIte
             case 0:
                 break;
             case 1:
-                startActivity(new Intent(this, TestDataActivity.class));
+                startActivity(new Intent(this, AddTestDataActivity.class));
                 break;
             default:
                 break;

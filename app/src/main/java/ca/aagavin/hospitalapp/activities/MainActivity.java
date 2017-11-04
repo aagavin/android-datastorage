@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity implements RadioGroup.OnChec
         this._isDoctor = -1;
 
         Doctor d = new Doctor();
-        d.setFirstname("aaron");
+        d.setFirstname("Aaron");
         d.setLastname("Smith");
         d.setDepartment("radiology");
         d.setPassword("pass");
@@ -55,27 +55,27 @@ public class MainActivity extends AppCompatActivity implements RadioGroup.OnChec
         EditText password = findViewById(R.id.passwordText);
         if(this._verifyNotEmpty(username, password)) {
 
-            if (this._isDoctor == -1){
-                Toast.makeText(this, "Please select user type (Doctor, Nurse)", Toast.LENGTH_SHORT).show();
-            }
-            else if(this._isDoctor == 1){
-                Doctor doctor = this._dao.loginDoctor(username.getText().toString(), password.getText().toString());
-                if (doctor !=null) {
-                    SharedPreferences.Editor editor = getSharedPreferences("loginid", MODE_PRIVATE).edit();
-                    editor.putInt("id", doctor.getDoctorId());
-                    editor.putBoolean("isDoctor", true);
-                    editor.apply();
+            switch (this._isDoctor){
+                case -1:
+                    Toast.makeText(this, "Please select user type (Doctor, Nurse)", Toast.LENGTH_SHORT).show();
+                    break;
+                case 1:
+                    Doctor doctor = this._dao.loginDoctor(username.getText().toString(), password.getText().toString());
+                    if (doctor !=null) {
+                        SharedPreferences.Editor editor = getSharedPreferences("loginid", MODE_PRIVATE).edit();
+                        editor.putInt("id", doctor.getDoctorId());
+                        editor.putBoolean("isDoctor", true);
+                        editor.apply();
 
-                    startActivity(new Intent(this, MenuActivity.class));
-                }
-                else{
-                    Toast.makeText(this, "Wrong username or password", Toast.LENGTH_SHORT).show();
-                }
-
-
-            }
-            else {
-                Nurse nurse = this._dao.loginNurse(username.getText().toString(), password.getText().toString());
+                        startActivity(new Intent(this, MenuActivity.class));
+                    }
+                    else{
+                        Toast.makeText(this, "Wrong username or password", Toast.LENGTH_SHORT).show();
+                    }
+                    break;
+                default:
+                    Nurse nurse = this._dao.loginNurse(username.getText().toString(), password.getText().toString());
+                    break;
             }
 
         }

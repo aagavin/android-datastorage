@@ -16,8 +16,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activities.TestDataActivity" />
-        <activity android:name=".activities.MenuActivity"></activity>
+        <activity android:name=".activities.AddTestDataActivity" android:label="Add new test" />
+        <activity android:name=".activities.MenuActivity" android:label="Choose Options" />
     </application>
 
 </manifest>
