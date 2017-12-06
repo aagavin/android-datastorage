@@ -26,6 +26,7 @@ public class MenuActivity extends AppCompatActivity implements AdapterView.OnIte
 
         switch ((int) index){
             case 0:
+                startActivity(new Intent(this, ViewTestActivity.class));
                 break;
             case 1:
                 startActivity(new Intent(this, AddTestDataActivity.class));

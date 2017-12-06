@@ -4,5 +4,6 @@
     <string-array name="options">
         <item>View Test Data</item>
         <item>Add test data</item>
+
     </string-array>
 </resources>
