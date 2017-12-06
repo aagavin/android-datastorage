@@ -1,6 +1,5 @@
 package ca.aagavin.hospitalapp.dbhelpers;
 
-
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -24,7 +23,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             "CREATE TABLE Patient (" +
                 "   patientId   INTEGER PRIMARY KEY AUTOINCREMENT," +
                 "   firstname   VARCHAR(255)    NOT NULL UNIQUE," +
-                "   lastname    VARCHAR(255)    NOT NULL," +
+                "   lastname    VARCHAR(255)    NOT NULL UNIQUE," +
                 "   department  VARCHAR(150)    NOT NULL," +
                 "   doctorId    INT             NOT NULL," +
                 "   room        INT             NOT NULL" +

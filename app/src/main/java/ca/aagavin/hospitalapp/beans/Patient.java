@@ -6,7 +6,7 @@ package ca.aagavin.hospitalapp.beans;
 
 public class Patient {
 
-    private int id;
+    private int patientId;
     private String firstname;
     private String lastname;
     private String department;
@@ -14,11 +14,11 @@ public class Patient {
     private int room;
 
     public int getId() {
-        return id;
+        return patientId;
     }
 
     public void setId(int id) {
-        this.id = id;
+        this.patientId = id;
     }
 
     public String getFirstname() {
@@ -59,5 +59,9 @@ public class Patient {
 
     public void setRoom(int room) {
         this.room = room;
+    }
+
+    public static String[] getColumns(){
+        return new String[] {"patientId", "firstname", "lastname", "department", "doctorId", "room"};
     }
 }

@@ -24,10 +24,14 @@ public class MenuActivity extends AppCompatActivity implements AdapterView.OnIte
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long index) {
 
+        // get if doctor
         switch ((int) index){
             case 0:
+                startActivity(new Intent(this, EditPatientActivity.class));
                 break;
             case 1:
+                break;
+            case 2:
                 startActivity(new Intent(this, AddTestDataActivity.class));
                 break;
             default:

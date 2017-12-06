@@ -16,8 +16,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activities.AddTestDataActivity" android:label="Add new test" />
-        <activity android:name=".activities.MenuActivity" android:label="Choose Options" />
+        <activity
+            android:name=".activities.AddTestDataActivity"
+            android:label="Add new test" />
+        <activity
+            android:name=".activities.MenuActivity"
+            android:label="Choose Options" />
+        <activity android:name=".activities.EditPatientActivity"></activity>
     </application>
 
 </manifest>
