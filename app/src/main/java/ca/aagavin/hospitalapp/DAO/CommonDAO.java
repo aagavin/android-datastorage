@@ -144,8 +144,8 @@ public class CommonDAO {
 
     /************************ LOGIN ******************************/
 
-    public List<Test> getPatientTest(){
-        Cursor cursor = this._db.rawQuery("SELECT * FROM Test where patientId = 1", null);
+    public List<Test> getPatientTest(int patId){
+        Cursor cursor = this._db.rawQuery("SELECT * FROM Test where patientId = patId", null);
 
         List<Test> testList = new ArrayList<>();
         if (cursor.moveToFirst()){
