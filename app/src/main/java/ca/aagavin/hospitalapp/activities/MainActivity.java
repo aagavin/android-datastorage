@@ -112,6 +112,7 @@ public class MainActivity extends AppCompatActivity implements RadioGroup.OnChec
         this._dao.close();
     }
 
+
     @Override
     public void onCheckedChanged(RadioGroup radioGroup, int i) {
         String selection = ((RadioButton) findViewById(i)).getText().toString();

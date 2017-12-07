@@ -1,5 +1,6 @@
 package ca.aagavin.hospitalapp.activities;
 
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -7,6 +8,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -87,11 +89,22 @@ public class EditPatientActivity extends AppCompatActivity implements AdapterVie
     public void saveChangesBtn(View view) {
         Patient selectedPatient = this._allPatients.get(this._selectedIndex);
 
+        SharedPreferences prefs = getSharedPreferences("loginid", MODE_PRIVATE);
+
+        int doctorId = prefs.getInt("id", 0);
+
+        System.out.println(doctorId);
+
+
         selectedPatient.setFirstname(this._editTextfirstname.getText().toString());
         selectedPatient.setLastname(this._editTextlastname.getText().toString());
         selectedPatient.setDepartment(this._editTextdepartment.getText().toString());
         selectedPatient.setRoom(Integer.parseInt(this._editTextroom.getText().toString()));
 
+        this._dao.updatePatient(selectedPatient);
+
+
+        Toast.makeText(this, "Patient "+selectedPatient.getFirstname()+" has been updated", Toast.LENGTH_LONG).show();
 
 
     }

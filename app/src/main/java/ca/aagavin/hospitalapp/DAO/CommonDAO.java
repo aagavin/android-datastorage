@@ -30,6 +30,17 @@ public class CommonDAO {
     }
 
 
+    /************************ PRIVATE METHODS ******************************/
+
+    private void _insert(String tableName, ContentValues contentValues){
+        this._db.insert(tableName, null, contentValues);
+    }
+
+    private void _update(String tableName, ContentValues contentValues, String filter){
+        this._db.update(tableName,contentValues, filter, null);
+    }
+
+
     /************************ CREATE ******************************/
 
     public void createEntity(Doctor entity){
@@ -59,15 +70,6 @@ public class CommonDAO {
         contentValues.put("room", entity.getRoom());
         this._insert("Patient", contentValues);
     }
-
-    private void _insert(String tableName, ContentValues contentValues){
-        this._db.insert(tableName, null, contentValues);
-    }
-
-//    private void _update(String tableName, ContentValues contentValues, String ){
-//        this._db.update(tableName,contentValues,);
-//    }
-
 
 
     /************************ READ ******************************/
@@ -113,6 +115,22 @@ public class CommonDAO {
 
         return patientList;
     }
+
+    /************************ UPDATE ******************************/
+
+    public void updatePatient(Patient patient){
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("firstname", patient.getFirstname());
+        contentValues.put("lastname", patient.getLastname());
+        contentValues.put("department", patient.getDepartment());
+        contentValues.put("doctorId", patient.getDoctorId());
+        contentValues.put("room", patient.getRoom());
+
+        this._update("Patient",contentValues,"patientId="+patient.getId());
+    }
+
+
+    /************************ LOGIN ******************************/
 
     public Doctor loginDoctor (String firstname, String passsword){
         Doctor doctor = new Doctor();
