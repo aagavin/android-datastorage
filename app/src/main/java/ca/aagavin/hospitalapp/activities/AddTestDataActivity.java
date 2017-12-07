@@ -1,5 +1,6 @@
 package ca.aagavin.hospitalapp.activities;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -64,9 +65,22 @@ public class AddTestDataActivity extends AppCompatActivity implements AdapterVie
     public void saveTestBtn(View view) {
         Toast.makeText(this, "hello", Toast.LENGTH_SHORT).show();
 
+        SharedPreferences prefs = getSharedPreferences("loginid", MODE_PRIVATE);
+
+        int nurseID = prefs.getInt("id", 0);
+        boolean isDoctor = prefs.getBoolean("isDoctor", false);
+
+
+        if (isDoctor){
+            Toast.makeText(this,
+                    "WARNING! Only doctors can update patient information",
+                    Toast.LENGTH_LONG).show();
+            return;
+        }
+
         Test test = new Test();
         test.setPatientId(PatientID);
-        test.setNurseId();
+        test.setNurseId(nurseID);
         test.setBpl(Integer.parseInt(bpl.getText().toString()));
         test.setBph(Integer.parseInt(bph.getText().toString()));
         test.setTemp(Integer.parseInt(temp.getText().toString()));
