@@ -92,19 +92,28 @@ public class EditPatientActivity extends AppCompatActivity implements AdapterVie
         SharedPreferences prefs = getSharedPreferences("loginid", MODE_PRIVATE);
 
         int doctorId = prefs.getInt("id", 0);
+        boolean isDoctor = prefs.getBoolean("isDoctor", false);
 
-        System.out.println(doctorId);
 
+        if (!isDoctor){
+            Toast.makeText(this,
+                    "WARNING! Only doctors can update patient information",
+                    Toast.LENGTH_LONG).show();
+            return;
+        }
 
         selectedPatient.setFirstname(this._editTextfirstname.getText().toString());
         selectedPatient.setLastname(this._editTextlastname.getText().toString());
         selectedPatient.setDepartment(this._editTextdepartment.getText().toString());
+        selectedPatient.setDoctorId(doctorId);
         selectedPatient.setRoom(Integer.parseInt(this._editTextroom.getText().toString()));
 
         this._dao.updatePatient(selectedPatient);
 
 
-        Toast.makeText(this, "Patient "+selectedPatient.getFirstname()+" has been updated", Toast.LENGTH_LONG).show();
+        Toast.makeText(this,
+                "Patient "+selectedPatient.getFirstname()+" has been updated",
+                Toast.LENGTH_LONG).show();
 
 
     }
