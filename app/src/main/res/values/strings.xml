@@ -2,6 +2,7 @@
     <string name="app_name">hopkinshospital</string>
     <string name="app_title">Hopkins Hospital</string>
     <string-array name="options">
+        <item>View Edit/Patient Date</item>
         <item>View Test Data</item>
         <item>Add test data</item>
 

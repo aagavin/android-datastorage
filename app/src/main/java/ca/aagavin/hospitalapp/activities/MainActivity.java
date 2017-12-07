@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity implements RadioGroup.OnChec
         this._isDoctor = -1;
 
         Doctor d = new Doctor();
-        d.setFirstname("Aaron");
+        d.setFirstname("aaron");
         d.setLastname("Smith");
         d.setDepartment("radiology");
         d.setPassword("pass");
@@ -42,11 +42,20 @@ public class MainActivity extends AppCompatActivity implements RadioGroup.OnChec
         Patient p = new Patient();
         p.setFirstname("testPatient");
         p.setLastname("testLastName");
+        p.setDepartment("radiology");
         p.setDoctorId(1);
         p.setRoom(123);
 
+        Patient p2 = new Patient();
+        p2.setFirstname("testPatient 2");
+        p2.setLastname("testLastName 2");
+        p2.setDepartment("radiology");
+        p2.setDoctorId(1);
+        p2.setRoom(321);
+
         this._dao.createEntity(d);
         this._dao.createEntity(p);
+        this._dao.createEntity(p2);
 
     }
 
@@ -94,6 +103,13 @@ public class MainActivity extends AppCompatActivity implements RadioGroup.OnChec
         }
         return true;
 
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+
+        this._dao.close();
     }
 
     @Override

@@ -6,6 +6,9 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import ca.aagavin.hospitalapp.beans.Doctor;
 import ca.aagavin.hospitalapp.beans.Nurse;
 import ca.aagavin.hospitalapp.beans.Patient;
@@ -18,9 +21,10 @@ public class CommonDAO {
 
     public CommonDAO(Context context) {
         this._dbHelper = new DatabaseHelper(context);
-        this._db = this._dbHelper.getWritableDatabase();
+        this.open();
     }
 
+    public void open() { this._db = this._dbHelper.getWritableDatabase();}
     public void close(){
         this._db.close();
     }
@@ -78,6 +82,31 @@ public class CommonDAO {
 
         cursor.close();
         return doctor;
+    }
+
+    public List<Patient> getAllPatients(){
+        Cursor cursor = this._db.rawQuery("SELECT * FROM Patient", null);
+
+        List<Patient> patientList = new ArrayList<>();
+        if (cursor.moveToFirst()){
+            while (!cursor.isAfterLast()) {
+                Patient p = new Patient();
+                p.setId(cursor.getInt(0));
+                p.setFirstname(cursor.getString(1));
+                p.setLastname(cursor.getString(2));
+                p.setDepartment(cursor.getString(3));
+                p.setDoctorId(cursor.getInt(4));
+                p.setRoom(cursor.getInt(5));
+
+                patientList.add(p);
+
+                cursor.moveToNext();
+
+            }
+        }
+
+
+        return patientList;
     }
 
     public Doctor loginDoctor (String firstname, String passsword){
