@@ -134,7 +134,7 @@ public class CommonDAO {
 
     public Nurse loginNurse(String firstname, String passsword){
         Nurse nurse = new Nurse();
-        Cursor cursor = this._db.query("Doctor", Doctor.getColumns(), "firstname = ? AND password = ?", new String[] {firstname, passsword}, null, null, null, null);
+        Cursor cursor = this._db.query("Nurse", Nurse.getColumns(), "firstname = ? AND password = ?", new String[] {firstname, passsword}, null, null, null, null);
 
         cursor.moveToFirst();
 
@@ -147,5 +147,6 @@ public class CommonDAO {
         cursor.close();
         return nurse;
     }
+
 
 }

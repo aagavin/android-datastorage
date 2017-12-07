@@ -30,6 +30,7 @@ public class MenuActivity extends AppCompatActivity implements AdapterView.OnIte
                 startActivity(new Intent(this, EditPatientActivity.class));
                 break;
             case 1:
+                startActivity(new Intent(this, ViewTestActivity.class));
                 break;
             case 2:
                 startActivity(new Intent(this, AddTestDataActivity.class));

@@ -22,7 +22,11 @@
         <activity
             android:name=".activities.MenuActivity"
             android:label="Choose Options" />
-        <activity android:name=".activities.EditPatientActivity"></activity>
+
+        <activity android:name=".activities.ViewTestActivity" />
+
+        <activity android:name=".activities.EditPatientActivity" />
+
     </application>
 
 </manifest>
