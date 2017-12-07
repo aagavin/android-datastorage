@@ -12,6 +12,7 @@ import java.util.List;
 import ca.aagavin.hospitalapp.beans.Doctor;
 import ca.aagavin.hospitalapp.beans.Nurse;
 import ca.aagavin.hospitalapp.beans.Patient;
+import ca.aagavin.hospitalapp.beans.Test;
 import ca.aagavin.hospitalapp.dbhelpers.DatabaseHelper;
 
 public class CommonDAO {
@@ -57,6 +58,16 @@ public class CommonDAO {
         contentValues.put("department", entity.getDepartment());
         contentValues.put("doctorId", entity.getDoctorId());
         contentValues.put("room", entity.getRoom());
+        this._insert("Patient", contentValues);
+    }
+
+    public void createEntity(Test entity){
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("patientId", entity.getPatientId());
+        contentValues.put("nurseId", entity.getNurseId());
+        contentValues.put("bpl", entity.getBpl());
+        contentValues.put("bph", entity.getBph());
+        contentValues.put("temp", entity.getTemp());
         this._insert("Patient", contentValues);
     }
 
@@ -112,6 +123,29 @@ public class CommonDAO {
 
 
         return patientList;
+    }
+
+    public List<Test> getPatientTest(){
+        Cursor cursor = this._db.rawQuery("SELECT * FROM Test where patientId = 1", null);
+
+        List<Test> testList = new ArrayList<>();
+        if (cursor.moveToFirst()){
+            while (!cursor.isAfterLast()) {
+                Test test = new Test();
+                test.setNurseId(cursor.getInt(0));
+                test.setBpl(cursor.getInt(0));
+                test.setBph(cursor.getInt(0));
+                test.setTemp(cursor.getInt(0));
+
+                testList.add(test);
+
+                cursor.moveToNext();
+
+            }
+        }
+
+        cursor.close();
+        return testList;
     }
 
     public Doctor loginDoctor (String firstname, String passsword){

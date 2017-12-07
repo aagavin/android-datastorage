@@ -8,7 +8,7 @@ public class Test {
     private int nurseId;
     private int bpl;
     private int bph;
-    private int pulse;
+    private int temp;
     private int bpm;
 
 
@@ -52,19 +52,11 @@ public class Test {
         this.bph = bph;
     }
 
-    public int getPulse() {
-        return pulse;
+    public int getTemp() {
+        return temp;
     }
 
-    public void setPulse(int pulse) {
-        this.pulse = pulse;
-    }
-
-    public int getBpm() {
-        return bpm;
-    }
-
-    public void setBpm(int bpm) {
-        this.bpm = bpm;
+    public void setTemp(int temp) {
+        this.temp = temp;
     }
 }
