@@ -62,8 +62,13 @@ public class CommonDAO {
 
     private void _insert(String tableName, ContentValues contentValues){
         this._db.insert(tableName, null, contentValues);
-
     }
+
+//    private void _update(String tableName, ContentValues contentValues, String ){
+//        this._db.update(tableName,contentValues,);
+//    }
+
+
 
     /************************ READ ******************************/
 

@@ -17,7 +17,7 @@
 
         <TextView
             android:id="@+id/textViewTitle"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Patient View/Edit"
@@ -51,7 +51,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="First Name:" />
+            android:text="First Name:"
+            android:textColor="@android:color/background_dark" />
 
         <EditText
             android:id="@+id/editTextfirstname"
@@ -73,7 +74,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Last Name: " />
+            android:text="Last Name: "
+            android:textColor="@android:color/background_dark" />
 
         <EditText
             android:id="@+id/editTextlastname"
@@ -95,7 +97,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Department" />
+            android:text="Department"
+            android:textColor="@android:color/background_dark" />
 
         <EditText
             android:id="@+id/editTextdepartment"
@@ -117,7 +120,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Room" />
+            android:text="Room"
+            android:textColor="@android:color/background_dark" />
 
         <EditText
             android:id="@+id/editTextroom"
@@ -136,17 +140,18 @@
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/button_cancel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Cancel" />
 
         <Button
-            android:id="@+id/button3"
+            android:id="@+id/button_save"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:onClick="saveChangesBtn"
             android:text="Save Changes" />
     </LinearLayout>
 
