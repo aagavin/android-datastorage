@@ -39,6 +39,12 @@ public class MainActivity extends AppCompatActivity implements RadioGroup.OnChec
         d.setDepartment("radiology");
         d.setPassword("pass");
 
+        Nurse n = new Nurse();
+        n.setFirstname("n");
+        n.setLastname("Smith");
+        n.setDepartment("radiology");
+        n.setPassword("n");
+
         Patient p = new Patient();
         p.setFirstname("testPatient");
         p.setLastname("testLastName");
@@ -55,6 +61,7 @@ public class MainActivity extends AppCompatActivity implements RadioGroup.OnChec
 
         this._dao.createEntity(d);
         this._dao.createEntity(p);
+        this._dao.createEntity(n);
         this._dao.createEntity(p2);
 
     }
@@ -84,6 +91,17 @@ public class MainActivity extends AppCompatActivity implements RadioGroup.OnChec
                     break;
                 default:
                     Nurse nurse = this._dao.loginNurse(username.getText().toString(), password.getText().toString());
+                    if (nurse != null){
+                        SharedPreferences.Editor editor = getSharedPreferences("loginid", MODE_PRIVATE).edit();
+                        editor.putInt("id", nurse.getNurseId());
+                        editor.putBoolean("isDoctor", false);
+                        editor.apply();
+
+                        startActivity(new Intent(this, MenuActivity.class));
+                    }
+                    else{
+                        Toast.makeText(this, "Wrong username or password", Toast.LENGTH_SHORT).show();
+                    }
                     break;
             }
 

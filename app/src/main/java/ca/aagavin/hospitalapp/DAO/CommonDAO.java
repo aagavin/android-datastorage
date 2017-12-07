@@ -78,8 +78,8 @@ public class CommonDAO {
         contentValues.put("nurseId", entity.getNurseId());
         contentValues.put("bpl", entity.getBpl());
         contentValues.put("bph", entity.getBph());
-        contentValues.put("temp", entity.getTemp());
-        this._insert("Patient", contentValues);
+        contentValues.put("temperature", entity.getTemp());
+        this._insert("Test", contentValues);
     }
 
 
@@ -128,24 +128,8 @@ public class CommonDAO {
     }
 
 
-    /************************ UPDATE ******************************/
-
-    public void updatePatient(Patient patient){
-        ContentValues contentValues = new ContentValues();
-        contentValues.put("firstname", patient.getFirstname());
-        contentValues.put("lastname", patient.getLastname());
-        contentValues.put("department", patient.getDepartment());
-        contentValues.put("doctorId", patient.getDoctorId());
-        contentValues.put("room", patient.getRoom());
-
-        this._update("Patient",contentValues,"patientId="+patient.getId());
-    }
-
-
-    /************************ LOGIN ******************************/
-
     public List<Test> getPatientTest(int patId){
-        Cursor cursor = this._db.rawQuery("SELECT * FROM Test where patientId = patId", null);
+        Cursor cursor = this._db.rawQuery("SELECT * FROM Test where patientId = " + patId +"", null);
 
         List<Test> testList = new ArrayList<>();
         if (cursor.moveToFirst()){
@@ -167,6 +151,22 @@ public class CommonDAO {
         return testList;
     }
 
+
+    /************************ UPDATE ******************************/
+
+    public void updatePatient(Patient patient){
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("firstname", patient.getFirstname());
+        contentValues.put("lastname", patient.getLastname());
+        contentValues.put("department", patient.getDepartment());
+        contentValues.put("doctorId", patient.getDoctorId());
+        contentValues.put("room", patient.getRoom());
+
+        this._update("Patient",contentValues,"patientId="+patient.getId());
+    }
+
+
+    /************************ LOGIN ******************************/
 
     public Doctor loginDoctor (String firstname, String passsword){
         Doctor doctor = new Doctor();

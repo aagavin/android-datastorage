@@ -8,8 +8,8 @@ public class Test {
     private int nurseId;
     private int bpl;
     private int bph;
-    private int temp;
-    private int bpm;
+    private int temperature;
+
 
 
     public int getTestId() {
@@ -53,10 +53,10 @@ public class Test {
     }
 
     public int getTemp() {
-        return temp;
+        return temperature;
     }
 
     public void setTemp(int temp) {
-        this.temp = temp;
+        this.temperature = temp;
     }
 }

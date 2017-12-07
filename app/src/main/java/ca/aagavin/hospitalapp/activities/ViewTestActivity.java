@@ -21,7 +21,7 @@ public class ViewTestActivity extends AppCompatActivity implements AdapterView.O
 
     private CommonDAO _dao;
     private int _selectedIndex = 0;
-    private int PatientID;
+    private int _patientID;
     private ListView testList;
 
     @Override
@@ -45,14 +45,16 @@ public class ViewTestActivity extends AppCompatActivity implements AdapterView.O
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(
                 this, android.R.layout.simple_spinner_item, dropDown);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
         Spinner spinner = (Spinner) findViewById(R.id.spinner);
         spinner.setAdapter(adapter);
+        spinner.setOnItemSelectedListener(this);
     }
 
     public void viewTestBtn(View view) {
         Toast.makeText(this, "hello", Toast.LENGTH_SHORT).show();
 
-        List<Test> a =  this._dao.getPatientTest(PatientID);
+        List<Test> a =  this._dao.getPatientTest(_patientID);
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(
                 this, android.R.layout.simple_spinner_item);
@@ -69,7 +71,7 @@ public class ViewTestActivity extends AppCompatActivity implements AdapterView.O
 
         Patient selectedPatient = this._dao.getAllPatients().get(this._selectedIndex);
 
-        PatientID = selectedPatient.getId();
+        _patientID = selectedPatient.getId();
 
     }
 
@@ -81,6 +83,7 @@ public class ViewTestActivity extends AppCompatActivity implements AdapterView.O
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        this._dao.close();
     }
 
 }

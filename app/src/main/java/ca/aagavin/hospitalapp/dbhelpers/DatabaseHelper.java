@@ -35,8 +35,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 "   nurseId     INT            NOT NULL," +
                 "   bpl         INT            NOT NULL," +
                 "   bph         INT            NOT NULL," +
-                "   pulse       INT            NOT NULL," +
-                "   bpm         INT            NOT NULL" +
+                "   temperature INT            NOT NULL" +
                 "   );";
         String NURSE_TABLE_CREATE =
             "CREATE TABLE Nurse (" +
