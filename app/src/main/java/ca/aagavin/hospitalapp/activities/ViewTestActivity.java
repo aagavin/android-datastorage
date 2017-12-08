@@ -56,9 +56,14 @@ public class ViewTestActivity extends AppCompatActivity implements AdapterView.O
 
         List<Test> a =  this._dao.getPatientTest(_patientID);
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(
-                this, android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        ArrayList<String> val = new ArrayList<String>();
+        val.add("33333");
+        val.add("00000");
+        val.add("rrrrr");
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1, val);
+
+
         ListView list = (ListView) findViewById(R.id.listview1);
         list.setAdapter(adapter);
 

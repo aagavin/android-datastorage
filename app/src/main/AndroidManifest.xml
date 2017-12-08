@@ -23,9 +23,11 @@
             android:name=".activities.MenuActivity"
             android:label="Choose Options" />
 
-        <activity android:name=".activities.ViewTestActivity" />
+        <activity android:name=".activities.ViewTestActivity"
+            android:parentActivityName=".activities.MenuActivity" />
 
-        <activity android:name=".activities.EditPatientActivity" />
+        <activity android:name=".activities.EditPatientActivity"
+            android:parentActivityName=".activities.MenuActivity" />
 
     </application>
 

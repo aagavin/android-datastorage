@@ -86,6 +86,8 @@ public class AddTestDataActivity extends AppCompatActivity implements AdapterVie
         test.setTemp(Integer.parseInt(temp.getText().toString()));
 
         this._dao.createEntity(test);
+
+        Toast.makeText(this,"New test added",Toast.LENGTH_LONG).show();
     }
 
     @Override

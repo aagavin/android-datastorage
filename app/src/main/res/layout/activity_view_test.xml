@@ -5,6 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_margin="15dp"
+    android:clipToPadding="true"
+    android:fillViewport="true"
     android:orientation="vertical"
     tools:context=".activities.ViewTestActivity">
 
@@ -12,11 +14,11 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical" >
+        android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_weight="0"
             android:orientation="horizontal">
 
@@ -36,7 +38,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_weight="0"
             android:orientation="horizontal">
 
@@ -57,7 +59,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_gravity="end"
             android:layout_weight="1"
             android:orientation="horizontal">
@@ -75,13 +77,12 @@
 
         <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent">
 
             <ListView
+                android:id="@+id/listview1"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/listview1">
-            </ListView>
+                android:layout_height="match_parent"></ListView>
         </LinearLayout>
 
     </LinearLayout>
