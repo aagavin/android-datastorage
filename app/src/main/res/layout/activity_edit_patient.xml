@@ -20,7 +20,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Patient View/Edit"
+            android:text="@string/patient_view_edit"
             android:textAlignment="textStart"
             android:textColor="@android:color/background_dark"
             android:textSize="18sp"
@@ -36,7 +36,7 @@
 
         <Spinner
             android:id="@+id/spinner"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1" />
     </LinearLayout>
@@ -51,7 +51,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="First Name:"
+            android:text="@string/first_name"
             android:textColor="@android:color/background_dark" />
 
         <EditText
@@ -74,7 +74,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Last Name: "
+            android:text="@string/last_name"
             android:textColor="@android:color/background_dark" />
 
         <EditText
@@ -97,7 +97,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Department"
+            android:text="@string/department"
             android:textColor="@android:color/background_dark" />
 
         <EditText
@@ -120,7 +120,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Room"
+            android:text="@string/room"
             android:textColor="@android:color/background_dark" />
 
         <EditText
@@ -144,7 +144,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Cancel" />
+            android:text="@string/cancel" />
 
         <Button
             android:id="@+id/button_save"
@@ -152,7 +152,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:onClick="saveChangesBtn"
-            android:text="Save Changes" />
+            android:text="@string/save_changes" />
     </LinearLayout>
 
 </LinearLayout>

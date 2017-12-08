@@ -26,11 +26,12 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="0"
                     android:lineSpacingExtra="12sp"
-                    android:text="Login to the Application"
+                    android:text="@string/login_to_the_application"
                     android:textAlignment="center"
                     android:textColor="@android:color/black"
                     android:textSize="30sp"
-                    android:typeface="serif" />
+                    android:typeface="serif"
+                    />
 
             </LinearLayout>
 
@@ -44,19 +45,16 @@
                     android:id="@+id/usernameView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0"
-                    android:text="Username: "
+                    android:text="@string/username"
                     android:textColor="@android:color/black"
                     android:textSize="20sp" />
 
                 <EditText
                     android:id="@+id/usernameText"
-
+                    android:inputType="numberDecimal"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0"
-                    android:ems="10"
-                    android:inputType="textPersonName" />
+                    android:ems="10" />
             </LinearLayout>
 
             <LinearLayout
@@ -70,7 +68,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="0"
-                    android:text="Password: "
+                    android:text="@string/password"
                     android:textColor="@android:color/black"
                     android:textSize="20sp" />
 
@@ -101,7 +99,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:checked="false"
-                        android:text="Doctor"
+                        android:text="@string/doctor"
                         android:textSize="20sp" />
 
                     <RadioButton
@@ -109,7 +107,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Nurse"
+                        android:text="@string/nurse"
                         android:textSize="20sp" />
                 </RadioGroup>
             </LinearLayout>
@@ -128,7 +126,7 @@
                     android:layout_gravity="bottom"
                     android:layout_weight="1"
                     android:onClick="loginBtnClick"
-                    android:text="Login" />
+                    android:text="@string/login" />
 
             </LinearLayout>
 

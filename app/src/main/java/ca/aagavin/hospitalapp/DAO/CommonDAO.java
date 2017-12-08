@@ -86,7 +86,7 @@ public class CommonDAO {
     /************************ READ ******************************/
 
 
-    public Doctor getEntity(long id){
+    public Doctor getDoctorById(long id){
         Doctor doctor = new Doctor();
         Cursor cursor = this._db.query(true,"Doctor", Doctor.getColumns(),"doctorId = " + id,null, null, null, null, null);
 
@@ -100,6 +100,21 @@ public class CommonDAO {
 
         cursor.close();
         return doctor;
+    }
+
+    public Nurse getNurseById(long id){
+        Nurse nurse = new Nurse();
+        Cursor cursor = this._db.query(true, "Nurse", Nurse.getColumns(), "nurseId = " + id, null, null, null, null, null);
+
+        cursor.moveToFirst();
+        nurse.setNurseId(cursor.getInt(0));
+        nurse.setFirstname(cursor.getString(1));
+        nurse.setLastname(cursor.getString(2));
+        nurse.setDepartment(cursor.getString(3));
+        nurse.setPassword(cursor.getString(4));
+
+
+        return nurse;
     }
 
     public List<Patient> getAllPatients(){
@@ -123,22 +138,22 @@ public class CommonDAO {
             }
         }
 
-
+        cursor.close();
         return patientList;
     }
 
-
     public List<Test> getPatientTest(int patId){
-        Cursor cursor = this._db.rawQuery("SELECT * FROM Test where patientId = " + patId +"", null);
+        Cursor cursor = this._db.query("Test", Test.getColumns(), "patientId=?", new String[] { patId+""}, null, null, null);
 
         List<Test> testList = new ArrayList<>();
         if (cursor.moveToFirst()){
             while (!cursor.isAfterLast()) {
                 Test test = new Test();
-                test.setNurseId(cursor.getInt(0));
-                test.setBpl(cursor.getInt(0));
-                test.setBph(cursor.getInt(0));
-                test.setTemp(cursor.getInt(0));
+                test.setPatientId(cursor.getInt(1));
+                test.setNurseId(cursor.getInt(2));
+                test.setBpl(cursor.getInt(3));
+                test.setBph(cursor.getInt(4));
+                test.setTemp(cursor.getInt(5));
 
                 testList.add(test);
 
@@ -168,9 +183,9 @@ public class CommonDAO {
 
     /************************ LOGIN ******************************/
 
-    public Doctor loginDoctor (String firstname, String passsword){
+    public Doctor loginDoctor (String id, String passsword){
         Doctor doctor = new Doctor();
-        Cursor cursor = this._db.query("Doctor", Doctor.getColumns(), "firstname = ? AND password = ?", new String[] {firstname, passsword}, null, null, null, null);
+        Cursor cursor = this._db.query("Doctor", Doctor.getColumns(), "doctorId = ? AND password = ?", new String[] {id, passsword}, null, null, null, null);
 
         cursor.moveToFirst();
 
@@ -186,9 +201,9 @@ public class CommonDAO {
         return doctor;
     }
 
-    public Nurse loginNurse(String firstname, String passsword){
+    public Nurse loginNurse(String id, String passsword){
         Nurse nurse = new Nurse();
-        Cursor cursor = this._db.query("Nurse", Nurse.getColumns(), "firstname = ? AND password = ?", new String[] {firstname, passsword}, null, null, null, null);
+        Cursor cursor = this._db.query("Nurse", Nurse.getColumns(), "nurseId = ? AND password = ?", new String[] {id, passsword}, null, null, null, null);
 
         cursor.moveToFirst();
 

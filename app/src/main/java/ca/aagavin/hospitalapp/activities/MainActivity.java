@@ -67,8 +67,8 @@ public class MainActivity extends AppCompatActivity implements RadioGroup.OnChec
     }
 
     public void loginBtnClick(View view) {
-        EditText username = findViewById(R.id.usernameText);
-        EditText password = findViewById(R.id.passwordText);
+        EditText username = (EditText) findViewById(R.id.usernameText);
+        EditText password = (EditText) findViewById(R.id.passwordText);
         if(this._verifyNotEmpty(username, password)) {
 
             switch (this._isDoctor){
@@ -77,6 +77,7 @@ public class MainActivity extends AppCompatActivity implements RadioGroup.OnChec
                     break;
                 case 1:
                     Doctor doctor = this._dao.loginDoctor(username.getText().toString(), password.getText().toString());
+
                     if (doctor !=null) {
                         SharedPreferences.Editor editor = getSharedPreferences("loginid", MODE_PRIVATE).edit();
                         editor.putInt("id", doctor.getDoctorId());

@@ -16,12 +16,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".activities.AddTestDataActivity"
-            android:label="Add new test" />
+
         <activity
             android:name=".activities.MenuActivity"
             android:label="Choose Options" />
+
+        <activity
+            android:name=".activities.AddTestDataActivity"
+            android:label="Add new test"
+            android:parentActivityName=".activities.MenuActivity"
+            />
 
         <activity android:name=".activities.ViewTestActivity"
             android:parentActivityName=".activities.MenuActivity" />

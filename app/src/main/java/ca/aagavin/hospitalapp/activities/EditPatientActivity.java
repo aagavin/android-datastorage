@@ -29,6 +29,10 @@ public class EditPatientActivity extends AppCompatActivity implements AdapterVie
     private EditText _editTextdepartment;
     private EditText _editTextroom;
 
+    private SharedPreferences _prefs;
+    private int _doctorId;
+    private boolean _isDoctor;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,6 +62,17 @@ public class EditPatientActivity extends AppCompatActivity implements AdapterVie
         this._editTextlastname = findViewById(R.id.editTextlastname);
         this._editTextdepartment = findViewById(R.id.editTextdepartment);
         this._editTextroom = findViewById(R.id.editTextroom);
+
+        this._prefs = getSharedPreferences("loginid", MODE_PRIVATE);
+        this._doctorId = _prefs.getInt("id", 0);
+        this._isDoctor = _prefs.getBoolean("isDoctor", false);
+
+        if (!_isDoctor){
+            this._editTextfirstname.setEnabled(false);
+            this._editTextlastname.setEnabled(false);
+            this._editTextdepartment.setEnabled(false);
+            this._editTextroom.setEnabled(false);
+        }
 
 
     }
@@ -89,10 +104,10 @@ public class EditPatientActivity extends AppCompatActivity implements AdapterVie
     public void saveChangesBtn(View view) {
         Patient selectedPatient = this._allPatients.get(this._selectedIndex);
 
-        SharedPreferences prefs = getSharedPreferences("loginid", MODE_PRIVATE);
 
-        int doctorId = prefs.getInt("id", 0);
-        boolean isDoctor = prefs.getBoolean("isDoctor", false);
+
+        int doctorId = _prefs.getInt("id", 0);
+        boolean isDoctor = _prefs.getBoolean("isDoctor", false);
 
 
         if (!isDoctor){

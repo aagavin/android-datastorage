@@ -14,6 +14,7 @@ import java.util.List;
 
 import ca.aagavin.hospitalapp.DAO.CommonDAO;
 import ca.aagavin.hospitalapp.R;
+import ca.aagavin.hospitalapp.beans.Nurse;
 import ca.aagavin.hospitalapp.beans.Patient;
 import ca.aagavin.hospitalapp.beans.Test;
 
@@ -22,6 +23,7 @@ public class ViewTestActivity extends AppCompatActivity implements AdapterView.O
     private CommonDAO _dao;
     private int _selectedIndex = 0;
     private int _patientID;
+    private Patient selectedPatient;
     private ListView testList;
 
     @Override
@@ -52,18 +54,25 @@ public class ViewTestActivity extends AppCompatActivity implements AdapterView.O
     }
 
     public void viewTestBtn(View view) {
-        Toast.makeText(this, "hello", Toast.LENGTH_SHORT).show();
+        List<Test> patientTests =  this._dao.getPatientTest(_patientID);
 
-        List<Test> a =  this._dao.getPatientTest(_patientID);
+        ArrayList<String> val = new ArrayList<>();
 
-        ArrayList<String> val = new ArrayList<String>();
-        val.add("33333");
-        val.add("00000");
-        val.add("rrrrr");
+        for(Test t : patientTests){
+            String viewSting = "";
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1, val);
+            Nurse patientNurse = this._dao.getNurseById(t.getNurseId());
+            viewSting += "NurseId: " + patientNurse.getFirstname() + " " + patientNurse.getLastname();
+            viewSting += "\nPatient: "+ this.selectedPatient.getFirstname() + " " + this.selectedPatient.getLastname();
+            viewSting += "\nBPL: " + t.getBpl();
+            viewSting += "\nBPH: " + t.getBph();
+            viewSting += "\nTemp: " + t.getTemp();
 
+            val.add(viewSting);
 
+        }
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1, val);
         ListView list = (ListView) findViewById(R.id.listview1);
         list.setAdapter(adapter);
 
@@ -73,17 +82,12 @@ public class ViewTestActivity extends AppCompatActivity implements AdapterView.O
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
         this._selectedIndex = i;
-
-        Patient selectedPatient = this._dao.getAllPatients().get(this._selectedIndex);
-
+        selectedPatient = this._dao.getAllPatients().get(this._selectedIndex);
         _patientID = selectedPatient.getId();
-
     }
 
     @Override
-    public void onNothingSelected(AdapterView<?> adapterView) {
-
-    }
+    public void onNothingSelected(AdapterView<?> adapterView) {}
 
     @Override
     protected void onDestroy() {

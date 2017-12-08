@@ -59,4 +59,8 @@ public class Test {
     public void setTemp(int temp) {
         this.temperature = temp;
     }
+
+    public static String[] getColumns(){
+        return new String[] {"testId", "patientId", "nurseId", "bpl", "bph", "temperature"};
+     }
 }
