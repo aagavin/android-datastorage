@@ -46,4 +46,8 @@ public class Nurse {
     public void setPassword(String password) {
         this.password = password;
     }
+
+    public static String[] getColumns(){
+        return new String[] {"nurseId", "firstname", "lastname", "department", "password"};
+    }
 }

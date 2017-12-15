@@ -8,8 +8,8 @@ public class Test {
     private int nurseId;
     private int bpl;
     private int bph;
-    private int pulse;
-    private int bpm;
+    private int temperature;
+
 
 
     public int getTestId() {
@@ -52,19 +52,15 @@ public class Test {
         this.bph = bph;
     }
 
-    public int getPulse() {
-        return pulse;
+    public int getTemp() {
+        return temperature;
     }
 
-    public void setPulse(int pulse) {
-        this.pulse = pulse;
+    public void setTemp(int temp) {
+        this.temperature = temp;
     }
 
-    public int getBpm() {
-        return bpm;
-    }
-
-    public void setBpm(int bpm) {
-        this.bpm = bpm;
-    }
+    public static String[] getColumns(){
+        return new String[] {"testId", "patientId", "nurseId", "bpl", "bph", "temperature"};
+     }
 }

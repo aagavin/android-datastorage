@@ -34,25 +34,41 @@ public class MainActivity extends AppCompatActivity implements RadioGroup.OnChec
         this._isDoctor = -1;
 
         Doctor d = new Doctor();
-        d.setFirstname("Aaron");
+        d.setFirstname("aaron");
         d.setLastname("Smith");
         d.setDepartment("radiology");
         d.setPassword("pass");
 
+        Nurse n = new Nurse();
+        n.setFirstname("n");
+        n.setLastname("Smith");
+        n.setDepartment("radiology");
+        n.setPassword("n");
+
         Patient p = new Patient();
         p.setFirstname("testPatient");
         p.setLastname("testLastName");
+        p.setDepartment("radiology");
         p.setDoctorId(1);
         p.setRoom(123);
 
+        Patient p2 = new Patient();
+        p2.setFirstname("testPatient 2");
+        p2.setLastname("testLastName 2");
+        p2.setDepartment("radiology");
+        p2.setDoctorId(1);
+        p2.setRoom(321);
+
         this._dao.createEntity(d);
         this._dao.createEntity(p);
+        this._dao.createEntity(n);
+        this._dao.createEntity(p2);
 
     }
 
     public void loginBtnClick(View view) {
-        EditText username = findViewById(R.id.usernameText);
-        EditText password = findViewById(R.id.passwordText);
+        EditText username = (EditText) findViewById(R.id.usernameText);
+        EditText password = (EditText) findViewById(R.id.passwordText);
         if(this._verifyNotEmpty(username, password)) {
 
             switch (this._isDoctor){
@@ -61,6 +77,7 @@ public class MainActivity extends AppCompatActivity implements RadioGroup.OnChec
                     break;
                 case 1:
                     Doctor doctor = this._dao.loginDoctor(username.getText().toString(), password.getText().toString());
+
                     if (doctor !=null) {
                         SharedPreferences.Editor editor = getSharedPreferences("loginid", MODE_PRIVATE).edit();
                         editor.putInt("id", doctor.getDoctorId());
@@ -75,6 +92,17 @@ public class MainActivity extends AppCompatActivity implements RadioGroup.OnChec
                     break;
                 default:
                     Nurse nurse = this._dao.loginNurse(username.getText().toString(), password.getText().toString());
+                    if (nurse != null){
+                        SharedPreferences.Editor editor = getSharedPreferences("loginid", MODE_PRIVATE).edit();
+                        editor.putInt("id", nurse.getNurseId());
+                        editor.putBoolean("isDoctor", false);
+                        editor.apply();
+
+                        startActivity(new Intent(this, MenuActivity.class));
+                    }
+                    else{
+                        Toast.makeText(this, "Wrong username or password", Toast.LENGTH_SHORT).show();
+                    }
                     break;
             }
 
@@ -95,6 +123,14 @@ public class MainActivity extends AppCompatActivity implements RadioGroup.OnChec
         return true;
 
     }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+
+        this._dao.close();
+    }
+
 
     @Override
     public void onCheckedChanged(RadioGroup radioGroup, int i) {

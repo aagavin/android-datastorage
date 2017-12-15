@@ -1,8 +1,29 @@
 <resources>
     <string name="app_name">hopkinshospital</string>
     <string name="app_title">Hopkins Hospital</string>
+    <string name="login_to_the_application">Login to the Application</string>
+    <string name="username">Username:</string>
+    <string name="password">Password:</string>
+    <string name="doctor">Doctor</string>
+    <string name="nurse">Nurse</string>
+    <string name="login">Login</string>
+    <string name="patient_view_edit">Patient View/Edit</string>
+    <string name="first_name">First Name:</string>
+    <string name="last_name">Last Name:</string>
+    <string name="department">Department</string>
+    <string name="room">Room</string>
+    <string name="cancel">Cancel</string>
+    <string name="save_changes">Save Changes</string>
+    <string name="add_new_test_data">Add new test data:</string>
+    <string name="patient">Patient</string>
+    <string name="bpl">BPL</string>
+    <string name="bph">BPH</string>
+    <string name="temperature">Temperature</string>
+    <string name="save_test">Save Test</string>
     <string-array name="options">
+        <item>View Edit/Patient Date</item>
         <item>View Test Data</item>
         <item>Add test data</item>
+
     </string-array>
 </resources>
