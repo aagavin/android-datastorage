@@ -1,5 +1,6 @@
 package ca.aagavin.hospitalapp.activities;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -8,6 +9,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -24,6 +26,7 @@ public class EditPatientActivity extends AppCompatActivity implements AdapterVie
     private List<Patient> _allPatients;
     private int _selectedIndex = 0;
 
+    private TextView _doctorTextView;
     private EditText _editTextfirstname;
     private EditText _editTextlastname;
     private EditText _editTextdepartment;
@@ -58,6 +61,7 @@ public class EditPatientActivity extends AppCompatActivity implements AdapterVie
         spinner.setOnItemSelectedListener(this);
 
 
+        this._doctorTextView = findViewById(R.id.doctorId);
         this._editTextfirstname = findViewById(R.id.editTextfirstname);
         this._editTextlastname = findViewById(R.id.editTextlastname);
         this._editTextdepartment = findViewById(R.id.editTextdepartment);
@@ -73,6 +77,8 @@ public class EditPatientActivity extends AppCompatActivity implements AdapterVie
             this._editTextdepartment.setEnabled(false);
             this._editTextroom.setEnabled(false);
         }
+        // show toast if not doctor
+        this._showToastNotDoctor();
 
 
     }
@@ -91,6 +97,7 @@ public class EditPatientActivity extends AppCompatActivity implements AdapterVie
 
         Patient selectedPatient = this._allPatients.get(this._selectedIndex);
 
+        this._doctorTextView.setText(selectedPatient.getDoctorId()+"");
         this._editTextfirstname.setText(selectedPatient.getFirstname());
         this._editTextlastname.setText(selectedPatient.getFirstname());
         this._editTextdepartment.setText(selectedPatient.getDepartment());
@@ -107,15 +114,9 @@ public class EditPatientActivity extends AppCompatActivity implements AdapterVie
 
 
         int doctorId = _prefs.getInt("id", 0);
-        boolean isDoctor = _prefs.getBoolean("isDoctor", false);
 
-
-        if (!isDoctor){
-            Toast.makeText(this,
-                    "WARNING! Only doctors can update patient information",
-                    Toast.LENGTH_LONG).show();
-            return;
-        }
+        // show toast if not doctor
+        if(this._showToastNotDoctor()){return;}
 
         selectedPatient.setFirstname(this._editTextfirstname.getText().toString());
         selectedPatient.setLastname(this._editTextlastname.getText().toString());
@@ -131,5 +132,19 @@ public class EditPatientActivity extends AppCompatActivity implements AdapterVie
                 Toast.LENGTH_LONG).show();
 
 
+    }
+
+    private boolean _showToastNotDoctor() {
+        if (!this._isDoctor){
+            Toast.makeText(this,
+                    "WARNING! Only doctors can update patient information",
+                    Toast.LENGTH_LONG).show();
+            return true;
+        }
+        return false;
+    }
+
+    public void cancelBtnClick(View view) {
+        this.finish();
     }
 }

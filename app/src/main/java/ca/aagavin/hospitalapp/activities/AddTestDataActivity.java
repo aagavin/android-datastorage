@@ -61,6 +61,7 @@ public class AddTestDataActivity extends AppCompatActivity implements AdapterVie
             System.out.println(p.getFirstname() +" " + p.getLastname());
             dropDown.add(p.getFirstname() +" " + p.getLastname());
         }
+        this._doctorCheck();
 
         ArrayAdapter<String> adapter = new ArrayAdapter<>(
                 this, android.R.layout.simple_spinner_item, dropDown);
@@ -77,13 +78,7 @@ public class AddTestDataActivity extends AppCompatActivity implements AdapterVie
     public void saveTestBtn(View view) {
 
 
-
-        if (this._isDoctor){
-            Toast.makeText(this,
-                    "WARNING! Only doctors can update patient information",
-                    Toast.LENGTH_LONG).show();
-            return;
-        }
+        if (_doctorCheck()) return;
 
         Test test = new Test();
         test.setPatientId(PatientID+1);
@@ -97,6 +92,7 @@ public class AddTestDataActivity extends AppCompatActivity implements AdapterVie
         Toast.makeText(this,"New test added",Toast.LENGTH_LONG).show();
     }
 
+
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
         this._selectedIndex = i;
@@ -108,7 +104,15 @@ public class AddTestDataActivity extends AppCompatActivity implements AdapterVie
     }
 
     @Override
-    public void onNothingSelected(AdapterView<?> adapterView) {
+    public void onNothingSelected(AdapterView<?> adapterView) {}
 
+    private boolean _doctorCheck() {
+        if (this._isDoctor){
+            Toast.makeText(this,
+                    "WARNING! Only nurses can update patient test information",
+                    Toast.LENGTH_LONG).show();
+            return true;
+        }
+        return false;
     }
 }

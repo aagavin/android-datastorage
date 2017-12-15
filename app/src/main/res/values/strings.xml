@@ -20,6 +20,10 @@
     <string name="bph">BPH</string>
     <string name="temperature">Temperature</string>
     <string name="save_test">Save Test</string>
+    <string name="doctorid">DoctorId</string>
+    <string name="view">View</string>
+    <string name="patient2">Patient:</string>
+    <string name="patient_test_results">Patient Test Results</string>
     <string-array name="options">
         <item>View Edit/Patient Date</item>
         <item>View Test Data</item>

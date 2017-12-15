@@ -19,7 +19,10 @@
 
         <activity
             android:name=".activities.MenuActivity"
-            android:label="Choose Options" />
+            android:label="Choose Options"
+            android:parentActivityName=".activities.MainActivity"
+
+            />
 
         <activity
             android:name=".activities.AddTestDataActivity"
